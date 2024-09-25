@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { User } from '../types/User';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel, Typography, Box, Grid, Card, CardContent, TablePagination, Button } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Typography, Box, Grid, Card, CardContent, TablePagination, Button } from '@mui/material';
 import { useMediaQuery } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
