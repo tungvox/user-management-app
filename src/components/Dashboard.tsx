@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import UserList from './UserList';
 import { User } from '../types/User';
 import { TextField, Container, Select, MenuItem, FormControl, InputLabel, InputAdornment, IconButton, Typography } from '@mui/material';
@@ -22,31 +22,33 @@ const Dashboard: React.FC = () => {
         fetchUsers();
     }, []);
 
-    const filteredUsers = users.filter(user => {
-        const lowerCaseFilter = filter.toLowerCase();
-        switch (filterType) {
-            case 'name':
-                return user.name.toLowerCase().includes(lowerCaseFilter);
-            case 'email':
-                return user.email.toLowerCase().includes(lowerCaseFilter);
-            case 'phone':
-                return user.phone.toLowerCase().includes(lowerCaseFilter);
-            case 'website':
-                return user.website.toLowerCase().includes(lowerCaseFilter);
-            case 'address':
-                return `${user.address.street}, ${user.address.city}, ${user.address.zipcode}`.toLowerCase().includes(lowerCaseFilter);
-            case 'all':
-            default:
-                return (
-                    user.name.toLowerCase().includes(lowerCaseFilter) ||
-                    user.email.toLowerCase().includes(lowerCaseFilter) ||
-                    user.phone.toLowerCase().includes(lowerCaseFilter) ||
-                    user.website.toLowerCase().includes(lowerCaseFilter) ||
-                    `${user.address.street}, ${user.address.city}, ${user.address.zipcode}`.toLowerCase().includes(lowerCaseFilter) ||
-                    user.company.name.toLowerCase().includes(lowerCaseFilter)
-                );
-        }
-    });
+    const filteredUsers = useMemo(() => {
+        return users.filter(user => {
+            const lowerCaseFilter = filter.toLowerCase();
+            switch (filterType) {
+                case 'name':
+                    return user.name.toLowerCase().includes(lowerCaseFilter);
+                case 'email':
+                    return user.email.toLowerCase().includes(lowerCaseFilter);
+                case 'phone':
+                    return user.phone.toLowerCase().includes(lowerCaseFilter);
+                case 'website':
+                    return user.website.toLowerCase().includes(lowerCaseFilter);
+                case 'address':
+                    return `${user.address.street}, ${user.address.city}, ${user.address.zipcode}`.toLowerCase().includes(lowerCaseFilter);
+                case 'all':
+                default:
+                    return (
+                        user.name.toLowerCase().includes(lowerCaseFilter) ||
+                        user.email.toLowerCase().includes(lowerCaseFilter) ||
+                        user.phone.toLowerCase().includes(lowerCaseFilter) ||
+                        user.website.toLowerCase().includes(lowerCaseFilter) ||
+                        `${user.address.street}, ${user.address.city}, ${user.address.zipcode}`.toLowerCase().includes(lowerCaseFilter) ||
+                        user.company.name.toLowerCase().includes(lowerCaseFilter)
+                    );
+            }
+        });
+    }, [users, filter, filterType]);
 
     const handleClearFilter = () => {
         setFilter('');
