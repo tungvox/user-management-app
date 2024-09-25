@@ -1,0 +1,128 @@
+$primary-color: #004b4b;
+$light-gray: #f5f5f5;
+$light-green: #207d7d;
+
+.userListContainer {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.tableContainer {
+  height: 450px; 
+  overflow-y: auto; 
+}
+
+.tableHeader {
+  position: sticky;
+  top: 0;
+  background-color: $primary-color;
+  color: #ffffff;
+  z-index: 1;
+
+  th {
+    font-weight: bold;
+  }
+}
+
+.tableRow {
+  &:nth-of-type(odd) {
+    background-color: $light-gray;
+  }
+
+  &:hover {
+    background-color: darken($light-gray, 5%);
+  }
+}
+
+.pagination {
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+
+  :global(.MuiPaginationItem-root) {
+    color: $primary-color;
+  }
+
+  :global(.MuiPaginationItem-page.Mui-selected) {
+    background-color: $primary-color;
+    color: #ffffff;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+.mobileCard {
+  margin-bottom: 5px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 5px;
+  margin-left: 5px;
+
+  .cardHeader {
+    background-color: $primary-color;
+    color: #ffffff;
+    padding: 12px 16px;
+    font-weight: bold;
+  }
+
+  .cardContent {
+    padding: 16px;
+  }
+}
+
+.mobileSort {
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .sortButtonGroup {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sortButton {
+    flex: 1;
+    padding: 10px 16px;
+    background-color: $light-gray;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    transition: all 0.3s ease;
+    text-transform: none;
+    font-weight: 500;
+
+    &:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    &:hover {
+      background-color: darken($light-gray, 5%);
+    }
+
+    &.active {
+      background-color: $primary-color;
+      color: #ffffff;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+
+    .sortIcon {
+      margin-left: 8px;
+      font-size: 18px;
+    }
+  }
+}
