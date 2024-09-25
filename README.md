@@ -1,3 +1,5 @@
+[![Demo Link](https://img.shields.io/badge/Demo-Live%20Site-blue)](https://user-management-app-b2540b29f19d.herokuapp.com/)
+
 ![Project Screenshot](./src/img/Screenshot.PNG)
 
 # Getting Started with Create React App
